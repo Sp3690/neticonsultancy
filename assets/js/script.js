@@ -46,3 +46,39 @@ document.getElementById("showContent").addEventListener("click", () => {
     }, index * 400); // delay per para
   });
 });
+
+let started = false;
+
+function startCounting() {
+  const counters = document.querySelectorAll('.counter');
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+
+    const speed = target / 100; // smaller = faster
+
+    const updateCount = () => {
+      if (count < target) {
+        count += speed;
+        counter.innerText = Math.ceil(count);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCount();
+  });
+}
+
+function handleScroll() {
+  const countersSection = document.getElementById('counters');
+  const rect = countersSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 100 && !started) {
+    started = true;
+    startCounting();
+  }
+}
+
+window.addEventListener('scroll', handleScroll);
