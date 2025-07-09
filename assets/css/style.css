@@ -299,8 +299,8 @@ nav a:hover {
 
 .testimonial-card {
   position: absolute;
-  bottom: -20px;
-  left: -30px;
+  bottom: 25px;
+  left: 30px;
   background: #e9f7ff;
   padding: 15px;
   border-radius: 8px;
@@ -414,7 +414,6 @@ h2 {
 .card-grid {
   display: flex;
   gap: 30px;
-
   justify-content: center;
   margin-top: 40px;
 }
